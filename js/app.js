@@ -23,7 +23,7 @@ async function getIPAdress() {
 
 async function getInfoByIP(objWithIP) {
   try {
-    const response = await fetch(`https://ip-api.com/json/${objWithIP.ip}`);
+    const response = await fetch(`http://ip-api.com/json/${objWithIP.ip}`);
     const responseParse = await response.json();
     return responseParse;
   } catch (error) {
