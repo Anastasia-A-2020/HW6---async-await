@@ -1,8 +1,5 @@
 const btn = document.querySelector(".js-sendBtn");
-
 const API_URL = "https://api.ipify.org/?format=json";
-
-// під кнопкою вивести на сторінку інформацію, отриману з останнього запиту – континент, країна, регіон, місто, район.
 
 btn.addEventListener("click", onBtnClick);
 
@@ -15,15 +12,23 @@ async function onBtnClick() {
 }
 
 async function getIPAdress() {
-  const response = await fetch(API_URL);
-  const responseParse = await response.json();
-  return responseParse;
+  try {
+    const response = await fetch(API_URL);
+    const responseParse = await response.json();
+    return responseParse;
+  } catch (error) {
+    alert(error.message);
+  }
 }
 
 async function getInfoByIP(objWithIP) {
-  const response = await fetch(`http://ip-api.com/json/${objWithIP.ip}`);
-  const responseParse = await response.json();
-  return responseParse;
+  try {
+    const response = await fetch(`http://ip-api.com/json/${objWithIP.ip}`);
+    const responseParse = await response.json();
+    return responseParse;
+  } catch (error) {
+    alert(error.message);
+  }
 }
 
 function renderCard(data) {
