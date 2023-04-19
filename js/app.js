@@ -11,7 +11,6 @@ async function onBtnClick() {
   const infoByIP = await getInfoByIP(ip);
 
   const markup = renderCard(infoByIP);
-  console.log(markup);
   btn.insertAdjacentHTML("afterend", markup);
 }
 
@@ -28,14 +27,13 @@ async function getInfoByIP(objWithIP) {
 }
 
 function renderCard(data) {
-  console.log(data);
   return `
-  <form name="info-by-IP">
-      <input type="text" name="continent" value=${data.timezone} />
-      <input type="text" name="country" value=${data.country} />
-      <input type="text" name="region" value=${data.region} />
-      <input type="text" name="regionName" value=${data.regionName} />
-      <input type="text" name="city" value=${data.city} />
+  <form name="info-by-IP" class='form'>
+      <input class='form-item' type="text" name="continent" value='Continent: ${data.timezone}' />
+      <input class='form-item' type="text" name="country" value='Country: ${data.country}' />
+      <input class='form-item' type="text" name="region" value='Region: ${data.region}' />
+      <input class='form-item' type="text" name="regionName" value='RegionName: ${data.regionName}' />
+      <input class='form-item' type="text" name="city" value='City: ${data.city}' />
     </form>
   `;
 }
