@@ -17,7 +17,7 @@ async function getIPAdress() {
     const responseParse = await response.json();
     return responseParse;
   } catch (error) {
-    alert(error.message);
+    return alert(error.message);
   }
 }
 
@@ -27,7 +27,7 @@ async function getInfoByIP(objWithIP) {
     const responseParse = await response.json();
     return responseParse;
   } catch (error) {
-    alert(error.message);
+    return alert(error.message);
   }
 }
 
