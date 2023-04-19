@@ -31,14 +31,20 @@ async function getInfoByIP(objWithIP) {
   }
 }
 
-function renderCard(data) {
+function renderCard({
+  timezone = "Europe/Kyiv",
+  country = "Ukraine",
+  region = "03",
+  regionName = "Kyivska",
+  city = "Kyiv",
+}) {
   return `
   <form name="info-by-IP" class='form'>
-      <input class='form-item' type="text" name="continent" value='Continent: ${data.timezone}' />
-      <input class='form-item' type="text" name="country" value='Country: ${data.country}' />
-      <input class='form-item' type="text" name="region" value='Region: ${data.region}' />
-      <input class='form-item' type="text" name="regionName" value='RegionName: ${data.regionName}' />
-      <input class='form-item' type="text" name="city" value='City: ${data.city}' />
+      <input class='form-item' type="text" name="continent" value='Continent: ${timezone}' />
+      <input class='form-item' type="text" name="country" value='Country: ${country}' />
+      <input class='form-item' type="text" name="region" value='Region: ${region}' />
+      <input class='form-item' type="text" name="regionName" value='RegionName: ${regionName}' />
+      <input class='form-item' type="text" name="city" value='City: ${city}' />
     </form>
   `;
 }
