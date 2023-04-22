@@ -21,9 +21,11 @@ async function getIPAdress() {
   }
 }
 
-async function getInfoByIP(objWithIP) {
+async function getInfoByIP({ ip }) {
   try {
-    const response = await fetch(`http://ip-api.com/json/${objWithIP.ip}`);
+    const response = await fetch(
+      `http://ip-api.com/json/${ip}?fields=status,message,continent,country,countryCode,region,regionName,city,district,zip,timezone`
+    );
     const responseParse = await response.json();
     return responseParse;
   } catch (error) {
@@ -32,19 +34,20 @@ async function getInfoByIP(objWithIP) {
 }
 
 function renderCard({
-  timezone = "Europe/Kyiv",
+  continent = "Europe/Kyiv",
   country = "Ukraine",
-  region = "03",
-  regionName = "Kyivska",
+  district = "",
+  regionName = "Kyiv City",
   city = "Kyiv",
 }) {
   return `
   <form name="info-by-IP" class='form'>
-      <input class='form-item' type="text" name="continent" value='Continent: ${timezone}' />
-      <input class='form-item' type="text" name="country" value='Country: ${country}' />
-      <input class='form-item' type="text" name="region" value='Region: ${region}' />
-      <input class='form-item' type="text" name="regionName" value='RegionName: ${regionName}' />
-      <input class='form-item' type="text" name="city" value='City: ${city}' />
+      <input class='form-item' type="text" name="continent" value='Continent: ${continent}' readonly/>
+      <input class='form-item' type="text" name="country" value='Country: ${country} ' readonly  />
+      
+      <input class='form-item' type="text" name="regionName" value='RegionName: ${regionName} ' readonly  />
+      <input class='form-item' type="text" name="city" value='City: ${city} ' readonly  />
+      <input class='form-item' type="text" name="district" value='District: ${district} ' readonly  />
     </form>
   `;
 }
