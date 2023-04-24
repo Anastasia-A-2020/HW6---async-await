@@ -4,6 +4,10 @@ const API_URL = "https://api.ipify.org/?format=json";
 btn.addEventListener("click", onBtnClick);
 
 async function onBtnClick() {
+  if (document.forms.formInfo) {
+    return alert("Information on your IP address has already been shown");
+  }
+
   const ip = await getIPAdress();
   const infoByIP = await getInfoByIP(ip);
 
@@ -44,7 +48,7 @@ function renderCard({
     district = "no district";
   }
   return `
-  <form name="info-by-IP" class='form'>
+  <form name="formInfo" class='form'>
       <input class='form-item' type="text" name="continent" value='Continent: ${continent}' readonly/>
       <input class='form-item' type="text" name="country" value='Country: ${country} ' readonly  />
       
