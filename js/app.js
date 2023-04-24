@@ -40,6 +40,9 @@ function renderCard({
   regionName = "Kyiv City",
   city = "Kyiv",
 }) {
+  if (district.length === 0) {
+    district = "no district";
+  }
   return `
   <form name="info-by-IP" class='form'>
       <input class='form-item' type="text" name="continent" value='Continent: ${continent}' readonly/>
